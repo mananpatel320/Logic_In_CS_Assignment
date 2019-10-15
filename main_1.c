@@ -63,9 +63,9 @@ int main()
 			break;
 
 			//To print the stack.
-			case 6:
-			printf(stack, max, stackPointer);
-			break;
+			//case 6:
+			//printf(stack, max, stackPointer);
+			//break;
 		}
 
 	}
