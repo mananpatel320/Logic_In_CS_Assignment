@@ -1,3 +1,6 @@
+#include<string.h>
+#include<ctype.h>
+
 // contains functions for basic operations on stack.
 // author : Rashi Jain, 11/10/19
 
@@ -28,42 +31,39 @@ int isFull(char stack[], int max, int stackPointer);
 // return : character at the top of the stack. 
 char top(char stack[], int max, int stackPointer);
 
+
 void push(char stack[], int max, int *stackPointer, char value){
-     if(isFull(stack,max,*stackPointer) == 1){
-          return;
-     }
-     (*stackPointer)++;
-     stack[*stackPointer] = value;
+    if(isFull(stack,max,*stackPointer) == 1){
+        return;
+    }
+    ++(*stackPointer);
+    stack[*stackPointer] = value;
 }
 
 void pop(char stack[], int max, int *stackPointer){
-     if(isEmpty(stack,max,*stackPointer) == 1){
-          return;
-     }
-     (*stackPointer)--;
+    if(isEmpty(stack,max,*stackPointer) == 1){
+        return;
+    }
+    --(*stackPointer);
 }
 
 int isEmpty(char stack[], int max, int stackPointer){
-     if(stackPointer == -1){
-          return 1;
-     }
-     else{
-          return 0;
-     }
+    if( stackPointer == -1 )
+        return 1;
+    return 0;
 }
+
 int isFull(char stack[], int max, int stackPointer){
-     if(stackPointer == (max-1)){
-          return 1;
-     }
-     else{
-          return 0;
-     }
+    if( stackPointer == (max - 1))
+        return 1;
+    return 0;
 }
 
 char top(char stack[], int max, int stackPointer){
-     if(isEmpty(stack,max,stackPointer) == 1){
-          return 0;
-     }
-     return stack[stackPointer];
+    if(isEmpty(stack,max,stackPointer) == 1)
+        return 0;
+    return stack[stackPointer];
 }
+
+
 
