@@ -1,69 +1,14 @@
-#include<string.h>
-#include<ctype.h>
+// contains function to make any propositional logic formula implication-free. 
+// author : Rashi Jain, 30/10/19
 
-// contains functions for basic operations on stack.
-// author : Rashi Jain, 11/10/19
-
-// stack : character array used for implementation.
-// max : integer variable denoting maximum size of array.
-// stackPointer : Integer variable which denotes the top index of the stack, -1 when the stack is empty.  
-// (*stackPointer) = Pointer to the integer variable denoting top index.  
-// Pointers have been used as the function will update the top index of the stack.
-// value : is a character variable - the value to be pushed.
-
-// used to insert a value into the stack.
-// return : void
-void push(char stack[], int max, int *stackPointer, char value);
-
-// deletes the top value from stack and updates *stackPointer.
-// return : void.
-void pop(char stack[], int max, int *stackPointer);
-
-// to check whether stack is empty or not by the value of *stackPointer. 
-// return : 1 when stack is empty and 0 when it isn't
-int isEmpty(char stack[], int max, int stackPointer);
-
-// checks whether stack is full or not. 
-// return : 1 when stack is full and 0 when it isn't. 
-int isFull(char stack[], int max, int stackPointer);
-
-// gives the top element of the stack.
-// return : character at the top of the stack. 
-char top(char stack[], int max, int stackPointer);
-
-
-void push(char stack[], int max, int *stackPointer, char value){
-    if(isFull(stack,max,*stackPointer) == 1){
-        return;
-    }
-    ++(*stackPointer);
-    stack[*stackPointer] = value;
-}
-
-void pop(char stack[], int max, int *stackPointer){
-    if(isEmpty(stack,max,*stackPointer) == 1){
-        return;
-    }
-    --(*stackPointer);
-}
-
-int isEmpty(char stack[], int max, int stackPointer){
-    if( stackPointer == -1 )
-        return 1;
-    return 0;
-}
-
-int isFull(char stack[], int max, int stackPointer){
-    if( stackPointer == (max - 1))
-        return 1;
-    return 0;
-}
-
-char top(char stack[], int max, int stackPointer){
-    if(isEmpty(stack,max,stackPointer) == 1)
-        return 0;
-    return stack[stackPointer];
-}
-
-
-
+// Removes all implications from the parse tree.   
+// root : Pointer to root of the parse tree(dataype : node *)
+// node dataype is defined as
+// typedef struct node
+// {
+//		char ch;  	
+//   	struct node *left;
+//		struct node *right;
+// }node;
+// return : root of the parse tree not containing any implication (dataype : node *)
+node *impl_free(node *root);
