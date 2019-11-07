@@ -1,3 +1,7 @@
+//Manan Patel 2018A7PS0194H
+//Adit Gandhi 2018A7PS0575H
+//Dhiraaj Desai 2018A7PS0146H
+
 #include "stack.h"
 void push(node* stack[], int max, int *stackPointer, node* value){
 	if( isFull(stack,max,*stackPointer) == 1 ){
