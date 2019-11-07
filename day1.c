@@ -20,4 +20,3 @@ node *impl_free(node *root){
 	traverse(root);
 	return root;
 }
-

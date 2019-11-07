@@ -50,4 +50,3 @@ node* parseTree(char post_exp[]){
 	}
 	return stack[0];
 }
-
