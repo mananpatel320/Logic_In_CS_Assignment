@@ -34,4 +34,3 @@ node* top(node* stack[], int max, int stackPointer){
 	}
 	return stack[stackPointer];
 }
-

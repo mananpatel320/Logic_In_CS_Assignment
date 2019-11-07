@@ -44,6 +44,14 @@ void traverseday2(node *currentnode,node *mainroot, node *prevnode){
 }
 
 node *nnf(node *root){
-	traverseday2(root,root,root);
-	return root;
+	node *previous = (node *)malloc(sizeof(node));
+	node *leftfake = (node *)malloc(sizeof(node));
+	leftfake->right = NULL;
+	leftfake->left = NULL;
+	leftfake->ch = '1';
+	previous->right = root;
+	previous->left = leftfake;
+	previous->ch = '0';
+	traverseday2(previous,previous,previous);
+	return previous->right;
 }	

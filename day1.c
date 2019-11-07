@@ -4,7 +4,7 @@
 void traverse(node *root){ 
 	if( root!= NULL ){
 		if( root->ch == '>' ){
-			root->ch = '^';
+			root->ch = 'V';
 			node *newNode = (node*)malloc(sizeof(node));
 			newNode->ch = '~';
 			newNode->left = NULL;
