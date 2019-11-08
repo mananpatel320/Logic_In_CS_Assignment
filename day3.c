@@ -1,61 +1,39 @@
-#include<string.h>
-#include<ctype.h>
-#include<stdlib.h>
-#include<stdio.h>
-#include "modifiedDay1.h"
+//Manan Patel 2018A7PS0194H
+//Adit Gandhi 2018A7PS0575H
+//Dhiraaj Desai 2018A7PS0146H
 
-void inorder(node *root){
-        if(root != NULL)
-	{
-		if (isalpha(root->ch) && (root->ch) != 'V')
-		{
-			printf("%c", root->ch);
+#include "stack.h"
+#include<stdlib.h>
+
+node *distr(node *n1, node *n2){
+	node *newNode = (node *)malloc(sizeof(node));
+	if( n1->ch == '^' ){
+		newNode->right = distr(n1->right,n2);
+		newNode->left = distr(n1->left,n2);
+		newNode->ch = '^';
+	}
+	else if ( n2->ch == '^'){
+		newNode->left = distr(n1,n2->left);
+		newNode->right = distr(n1,n2->right);
+		newNode->ch = '^';
+	}
+	else{
+		newNode->left = n1;
+		newNode->right = n2;
+		newNode->ch = 'V';
+	}
+	return newNode;
+}
+		
+node *cnf(node *root){
+	if( root != NULL && root->right!=NULL ){
+		if( root->ch == 'V' ){
+			root = distr(cnf(root->left),cnf(root->right));
 		}
-		else
-		{
-			printf("(");
-		  	inorder(root->left);
-			printf("%c", root->ch);
-		   		inorder(root->right);
-			printf(")");
+		else if( root->ch == '^' ){
+			root->right = cnf(root->right);
+			root->left = cnf(root->left);
 		}
 	}
-}
-
-node* parseTree(char post_exp[]){
-        int len = strlen(post_exp);
-        node *stack[len];
-        int i = 0, stackPointer = -1;
-        while( i < len ){
-                char a = post_exp[i];
-                node *newNode = (node *)malloc(sizeof(node));
-                newNode->ch = a;
-                newNode->left = NULL;
-                newNode->right = NULL;
-                if( isalpha(a) && a != 'V'){
-			push(stack,len,&stackPointer,newNode);
-                        
-			
-                }
-                else
-		{
-			if(a=='~')
-			{
-			 newNode->right = stack[stackPointer];
-                        pop(stack,len,&stackPointer);
-                        
-                        push(stack,len,&stackPointer,newNode);
-			}
-			else
-			{
-                        newNode->right = stack[stackPointer];
-                        pop(stack,len,&stackPointer);
-                        newNode->left = stack[stackPointer];
-                        pop(stack,len,&stackPointer);
-                        push(stack,len,&stackPointer,newNode);
-			}
-		}
-                ++i;
-        }
-        return stack[0];
+	return root;
 }

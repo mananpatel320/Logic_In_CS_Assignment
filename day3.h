@@ -1,8 +1,9 @@
-// contains functions to construct a parse tree and print the infix expression. 
-// author : Rashi Jain, 11/10/19
+// contains functions to convert an expression into equivalent formula in CNF. 
+// author : Rashi Jain, 30/10/19
 
-// prints the infix expression via inorder traversal. 
-// root : Pointer to root of the binary tree. (dataype : node *)
+// Computes CNF for 'n1 V n2' where n1 and n2 should be in CNF.  
+// n1 : Pointer to left operand (dataype : node *)
+// n2 : Pointer to right operand (dataype : node *)
 // node dataype is defined as
 // typedef struct node
 // {
@@ -10,10 +11,10 @@
 //   	struct node *left;
 //		struct node *right;
 // }node;
-// return : void
-void inorder(node *root);
+// return : root of the parse tree (dataype : node *)
+node *distr(node *n1, node *n2);
 
-// constructs the binary tree given a postfix expression. 
-// post_exp : character array containing postfix expression.
-// return : (node *) dataype - pointer to the root of the binary tree. 
-node* parseTree(char post_exp[]);
+// Computes CNF.  
+// root : Pointer to root of the parse tree (dataype : node *)
+// return : root of the parse tree in CNF (dataype : node *)
+node *cnf(node *root);
