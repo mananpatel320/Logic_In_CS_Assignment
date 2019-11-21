@@ -1,0 +1,29 @@
+MODULE main
+VAR
+	location: {s1,s2,s3};
+	p: boolean;
+	q: boolean;
+	ASSIGN
+		init(location) := s1;
+		init(p) := FALSE;
+		init(q) := FALSE;
+		next(location) := case
+			(location = s1) : {s2,s3};
+			(location = s2) : s2;
+			(location = s3) : s3;
+			TRUE : location;
+			esac;
+		next(p) := case
+			(location = s1) : FALSE;
+			(location = s2) : TRUE;
+			(location = s3) : FALSE;
+			esac;
+		next(q) := case
+			(location = s1) : FALSE;
+			(location = s2) : FALSE;
+			(location = s3) : TRUE;
+			esac;
+CTLSPEC
+	(AF(p)|AF(q));
+CTLSPEC
+	AF((p|q));

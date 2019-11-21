@@ -1,0 +1,68 @@
+1. EF ∅ and EG ∅
+   Answer : Not Equivalent
+   Model File Name  : Ans1.smv
+   Model Description: Model 
+   						M = (S,->,L)
+   					  
+   					  Set of States S
+   					  	S = {s1,s2,s3}
+
+   					  Transition Relation ->
+   					  	->(s1,s2), ->(s2,s1), ->(s2,s3),
+   					  	->(s3,s3), ->(s1,s3)
+   					  
+   					  Labeling Function L 
+   					 	 L(s1) = {p,q};
+   					 	 L(s2) = {q,r};
+   					 	 L(s3) = {r};
+   					  
+2. EF ∅ V EF φ and EF ( ∅ V φ )
+   Answer : Equivalent
+   Explanation : (EF ∅) depicts that ∅ is true in some state along path P1. 
+   				 (EF φ) depicts that φ is true in some state along path P2.
+   				 (EF ( ∅ V φ )) means that among all possible paths there exists
+   				 a state in which either or both of ∅ or φ are true.
+   				 The above statement hence makes either (EF ∅) or (EF φ) or both true
+   				 in all possible paths.
+   				 Which can be stated as (EF ∅) V (EF φ).
+   				 If there does not exist any path in which ∅ is true and any path in which
+   				 φ is true, then there shall definatley not exist a path in which ∅ V φ is
+   				 true. Hence making both the formulae false at the same time.
+   				  
+   
+3. AF ∅ V AF φ and AF ( ∅ V φ )
+   Answer : Not Equivalent
+   Model File Name  : Ans3.smv
+   Model Description: Model 
+   					     M = (S,->,L)
+   					  
+   					  Set of States S
+   					 	 S = {s1,s2,s3}
+	
+   					  Transition Relation ->
+   					 	->(s1,s2), ->(s1,s3), ->(s2,s2),
+   					  	->(s3,s3)
+   					  
+   					  Labeling Function L 
+   					  	L(s1) = {~p,~q};
+   					  	L(s2) = {p,~q};
+   					  	L(s3) = {~p,q};
+   					  
+4. EF ~∅ and ~AF ∅
+   Answer : Not Equivalent
+   Model File Name  : Ans4.smv
+   Model Description: Model 
+   						M = (S,->,L)
+   					  
+   					  Set of States S
+   					  	S = {s1,s2,s3}
+
+   					  Transition Relation ->
+   					  	->(s1,s2), ->(s2,s1), ->(s2,s3),
+   					 	 ->(s3,s3), ->(s1,s3)
+   					  
+   					  Labeling Function L 
+   					 	 L(s1) = {p,q};
+   					 	 L(s2) = {q,r};
+   					 	 L(s3) = {r};
+   					  
