@@ -1,6 +1,6 @@
 MODULE main
 VAR
-	location : {s0,s1};
+	location : {s0,s1,s2};
 	p : boolean;
 	q : boolean;
 	ASSIGN
@@ -8,16 +8,19 @@ VAR
 		init(p) := FALSE;
 		init(q) := FALSE;
 		next(location) := case
-						(location = s0) : s1;
+						(location = s0) : {s1,s2};
 						(location = s1) : s1;
+						(location = s2) : s2;
 						esac;
 		next(p) := case
 				 (location = s0) : FALSE;
 				 (location = s1) : TRUE;
+				 (location = s2) : TRUE;
 				 esac;
 		next(q) := case
 				 (location = s0) : FALSE;
-				 (location = s1) : TRUE;
+				 (location = s1) : FALSE;
+				 (location = s2) : TRUE;
 				 esac;
 LTLSPEC F(p)->F(q); 
 CTLSPEC AF(p)->AF(q);

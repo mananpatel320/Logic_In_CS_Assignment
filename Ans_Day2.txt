@@ -1,0 +1,26 @@
+1. Yes, there exists a model in which all the formulas hold. 
+   Model File Name   : Ans1.smv
+   Model Description : Model M = (S,->,L);
+   					   
+   					   Set of States S
+   					   S = {s0,s1,s2};
+   					   
+   					   Transition Relation ->
+   					   ->(s0,s1), ->(s0,s2), ->(s1,s1), ->(s2,s2)
+   					   
+   					   Labeling Function L
+   					   L(s0) = {}
+   					   L(s1) = {p}
+   					   L(s2) = {p,q}
+2. Model File Name   : Ans2.smv
+   Model Description : Model M = (S,->,L);
+   					   
+   					   Set of States S
+   					   S = {s0,s2};
+   					   
+   					   Transition Relation ->
+   					   ->(s0,s1), ->(s1,s1)
+   					   
+   					   Labeling Function L
+   					   L(s0) = {}
+   					   L(s1) = {p,q}
